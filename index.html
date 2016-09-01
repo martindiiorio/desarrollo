@@ -8,9 +8,11 @@
 
     <!--Bootstrap CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Google Fonts LATO BOLD-->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans%3A400%2C400italic%2C700%2C700italic%7CLato%3A400%2C400italic%2C700%2C700italic&#038;subset=latin&#038;ver=4.5.3">
     <!-- Custom CSS -->
-    <link rel="stylesheet" src="css/style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>dóndeDuele</title>
 </head>
 
 <body>
@@ -37,7 +39,7 @@ asdad
                         </ul>
                     </li> -->
                     <li><a href="#">Tutorial</a></li>
-                    <li><a href="#">Preguntas</a></li>
+                    <li><a href="#colapsador">Preguntas</a></li>
                     <li><a href="#">Contacto</a></li>
                     <li><a id="signin" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -124,9 +126,64 @@ asdad
     <div class="container">
         <h3>Collapsible Navbar</h3>
         <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
-            <p>Only when the button is clicked, the navigation bar will be displayed.</p>
+            <p>El link al FAQ desde Preguntas funciona.</p>
     </div>
 
+    <!-- Empieza FAQ -->
+   <div class="container"> 
+        <div class="col-xs-12">
+            <div class="panel-group" id="colapsador">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a class="faqItems faqTitle" href="#collapse1" data-toggle="collapse" data-parent="#colapsador">
+                                Pregunta 1
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapse1">
+                            <div class="panel-body faqItems faqBody">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a class="faqItems faqTitle" href="#collapse2" data-toggle="collapse" data-parent="#colapsador">
+                                Pregunta 2
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapse2">
+                            <div class="panel-body faqItems faqBody">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <a class="faqItems faqTitle" href="#collapse3" data-toggle="collapse" data-parent="#colapsador">
+                                Pregunta 3
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapse3">
+                            <div class="panel-body faqItems faqBody">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Cierra "container" de FAQ -->
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
