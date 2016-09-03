@@ -1,3 +1,4 @@
+/*FAQ CSS*/
 .faqItems {
 	font-size: 18px;
 	font-family: 'Lato';
@@ -13,6 +14,17 @@
 	font-weight: 300;
 }
 
+.align_glyph {
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+}
+
+.glyph_icon {
+	margin-left: 15px;
+}
+
+/*FOOTER CSS*/
 
 .footer2 {
 	background-color: #f8f8f8;
