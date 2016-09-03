@@ -16,7 +16,6 @@
 </head>
 
 <body>
-asdad
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -61,12 +60,12 @@ asdad
                 <div class="modal-body" style="padding:40px 50px;">
                     <form role="form">
                         <div class="form-group">
-                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-                            <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                            <label for="usrnameSignUp"><span class="glyphicon glyphicon-user"></span> Username</label>
+                            <input type="text" class="form-control" id="usrnameSignUp" placeholder="Enter email">
                         </div>
                         <div class="form-group">
-                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                            <input type="text" class="form-control" id="psw" placeholder="Enter password">
+                            <label for="pswSignup"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                            <input type="text" class="form-control" id="pswSignup" placeholder="Enter password">
                         </div>
                         <div class="checkbox">
                             <label>
@@ -99,12 +98,12 @@ asdad
                 <div class="modal-body" style="padding:40px 50px;">
                     <form role="form">
                         <div class="form-group">
-                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-                            <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                            <label for="usrnameLogin"><span class="glyphicon glyphicon-user"></span> Username</label>
+                            <input type="text" class="form-control" id="usrnameLogin" placeholder="Enter email">
                         </div>
                         <div class="form-group">
-                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                            <input type="text" class="form-control" id="psw" placeholder="Enter password">
+                            <label for="pswLogin"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                            <input type="text" class="form-control" id="pswLogin" placeholder="Enter password">
                         </div>
                         <div class="checkbox">
                             <label>
@@ -125,7 +124,7 @@ asdad
 
     <div class="container">
         <h3>Collapsible Navbar</h3>
-        <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
+        <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).</p>
             <p>El link al FAQ desde Preguntas funciona.</p>
     </div>
 
@@ -196,17 +195,63 @@ asdad
               <h4 class="modal-title">Aviso de privacidadr</h4>
             </div>
             <div class="modal-body">
-              <ul>
-                 <li>viñeta Aviso de Privacidad México</li>
-                 <li>viñeta Política de Privacidad Venezuela
-                 <li>viñeta Política de Privacidad Estados Unidos</li>
-                 <li>viñeta Política de Privacidad Ecuador</li>
-                 <li>viñeta Política de Privacidad Costa Rica</li>
-                 <li>viñeta Política de Privacidad Chile</li>
-                 <li>viñeta Política de Privacidad Otros países</li>
-              </ul>
+              <div class="col-xs-12">
+                  <div class="panel-group" id="colapsa">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <div class="panel-title">
+                                  <a class="" href="#privacidad_1" data-toggle="collapse" data-parent="#colapsador">
+                                      Aviso de Privacidad México
+                                  </a>
+                              </div>
+                              <div class="panel-collapse collapse" id="privacidad_1">
+                                  <div class="panel-body">
+                                      <p>
+
+                                      </p>RESPONSABLE DE LA PROTECCIÓN DE SUS DATOS PERSONALES: Mediconnect Health México, S.A.P.I.
+                                      de C.V, con domicilio Calle Fuentes de Ceres, Número 4, Código Postal 52780, Colonia Lomas
+                                      de Tecamachalco, Municipio Huixquilucan, Estado de México, es responsable de recabar sus
+                                      datos personales, del uso que se le dé a los mismos y de su protección.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <div class="panel-title">
+                                  <a class="" href="#privacidad_2" data-toggle="collapse" data-parent="#colapsador">
+                                      Pregunta 2
+                                  </a>
+                              </div>
+                              <div class="panel-collapse collapse" id="privacidad_2">
+                                  <div class="panel-body">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <div class="panel-title">
+                                  <a class="" href="#privacidad_3" data-toggle="collapse" data-parent="#colapsador">
+                                      Pregunta 3
+                                  </a>
+                              </div>
+                              <div class="panel-collapse collapse" id="privacidad_3">
+                                  <div class="panel-body">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer2">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -214,7 +259,6 @@ asdad
         </div>
       </div>
 
-    </div>
 
 
 <!-- footer -->
@@ -222,7 +266,7 @@ asdad
 <footer class="footer2">
     <div class="container zocalo">
       <p>
-        2016 © Virtua Consult Health Inc. Todos los derechos reservados. <a data-toggle="modal" data-target="#myModalAviso">Aviso de Privacidad</a>
+        2016 © Virtua Consult Health Inc. Todos los derechos reservados. <a class="pointer" data-toggle="modal" data-target="#myModalAviso">Aviso de Privacidad</a>
       </p>
     </div>
 
