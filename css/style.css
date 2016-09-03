@@ -1,3 +1,16 @@
+/*HOME CSS*/
+.navbar {
+    margin-bottom: 0;
+}
+
+.section-form {
+		padding-top: 1em;
+}
+
+.section-home {
+	background: url('../img/dondeDuele-corporativo.png') no-repeat;
+}
+
 /*FAQ CSS*/
 .faqItems {
 	font-size: 18px;
