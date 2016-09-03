@@ -13,3 +13,15 @@
 .faqBody {
 	font-weight: 300;
 }
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.section-form {
+		padding-top: 1em;
+}
+
+.section-home {
+	background: url('../img/dondeDuele-corporativo.png') no-repeat;
+}
