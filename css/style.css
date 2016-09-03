@@ -1,0 +1,26 @@
+/*FAQ CSS*/
+.faqItems {
+	font-size: 18px;
+	font-family: 'Lato';
+	font-style: normal;
+	src: local('Lato Bold'), local('Lato-Bold'), url(http://fonts.gstatic.com/s/lato/v11/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+.faqTitle {
+	font-weight: 600;
+}
+
+.faqBody {
+	font-weight: 300;
+}
+
+.align_glyph {
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+}
+
+.glyph_icon {
+	margin-left: 15px;
+}
