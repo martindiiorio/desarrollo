@@ -14,14 +14,21 @@
 	font-weight: 300;
 }
 
-.navbar {
-    margin-bottom: 0;
+
+
+
+.footer2 {
+	background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+	border-radius: 4px;
 }
 
-.section-form {
-		padding-top: 1em;
+.zocalo {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: center;
 }
 
-.section-home {
-	background: url('../img/dondeDuele-corporativo.png') no-repeat;
+.zocalo p {
+	margin: 0;
 }
