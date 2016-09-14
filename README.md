@@ -18,3 +18,38 @@ El cliente pide que se pueda navegar el sitio entre las 4 páginas de manera flu
 El cliente pide que el estilo del sitio sea común a las 4 páginas.
 
 El cliente pide que las páginas se vean de forma cómoda en dispositivos móviles.
+
+---------------------------------------------------------------------------------------
+
+CALIFICACIONES:
+
+
+.FAQ
+Correcciones:
+Observaciones:
+
+.Register
+Correcciones: Deberia incluir mas campos que log in. Cada input con su respectivo type.
+Observaciones:
+
+.Login
+Correcciones: El input type de la contraseña deberia ser "password".
+Observaciones:
+
+________________________________________________________________________________________
+
+CONSIGNAS PARA ENTREGA Lunes 26/9
+
+- El usuario desea que sus formularios de registración y login sean validados por JS.
+
+- El usuario desea que las respuestas del FAQ aparezcan al clickear la pregunta y que al clickearla de nuevo desaparezcan.
+
+- El usuario desea que tras registrarse le figure un cartel que diga cuantos ya hay anotados. 
+
+         -Para aumentar la cantidad de usuarios en uno se debe hacer una llamada a https://www.digitalhouse.com/nuevoUsuario
+
+         -Para consultar cuantos usuarios hay consultar en https://www.digitalhouse.com/getUsuarios
+
+
+
+Ambos métodos se llaman por GET. El primero no devuelve nada, el segundo devuelve un JSON. Por ahora este número se compartirá entre todos los trabajos de FSWD.
