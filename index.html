@@ -135,25 +135,25 @@
                         <div class="form-group">
                             <!-- Full Name -->
                             <label for="full_name_id" class="control-label">Full Name</label>
-                            <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
+                            <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer" onblur="validate(this)">
                         </div>
 
                         <div class="form-group">
                             <!-- Street 1 -->
                             <label for="street1_id" class="control-label">Street Address 1</label>
-                            <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o">
+                            <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o" onblur="validate(this)">
                         </div>
 
                         <div class="form-group">
                             <!-- Street 2 -->
                             <label for="street2_id" class="control-label">Street Address 2</label>
-                            <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                            <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc." onblur="validate(this)">
                         </div>
 
                         <div class="form-group">
                             <!-- City-->
                             <label for="city_id" class="control-label">City</label>
-                            <input type="text" class="form-control" id="city_id" name="city" placeholder="Smallville">
+                            <input type="text" class="form-control" id="city_id" name="city" placeholder="Smallville" onblur="validate(this)">
                         </div>
 
                         <div class="form-group">
@@ -217,7 +217,7 @@
                         <div class="form-group">
                             <!-- Zip Code-->
                             <label for="zip_id" class="control-label">Zip Code</label>
-                            <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+                            <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####" onblur="validate(this)">
                         </div>
 
                         <div class="form-group">
@@ -409,9 +409,10 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- modalesJS -->
     <script type="text/javascript" src="js/modals.js"></script>
-    <!-- scrollerJS -->
-    <script type="text/javascript" src="js/scroller.js"></script>
-
+    <!-- scrollerJS: removido hasta arreglar el infinite scroll -->
+    <!--<script type="text/javascript" src="js/scroller.js"></script>-->
+    <!-- Validacion del registro -->
+    <script type="text/javascript" src="js/validateForm.js"></script>
 
 </body>
 
