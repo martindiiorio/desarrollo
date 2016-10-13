@@ -5,4 +5,7 @@ $(document).ready(function() {
 	$("#login").click(function() {
 		$("#myModalLogIn").modal();
 	});
+	$("#faq").click(function() {
+		$("#myModalFAQ").modal();
+	});
 });

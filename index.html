@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Icono title-->
+    <link rel="icon" href="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTgeo4D_Ic0vClXpLtBHSgITMsHxDKEGHXloSN45PxlGV8dzPEe" sizes="16x16">
 
     <!--Bootstrap CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,7 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">dóndeDuele</a>
+                <a class="navbar-brand" href="index.html">dóndeDuele</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -40,16 +42,16 @@
                         </ul>
                     </li> -->
                     <li><a href="#" onclick="return false;" onmousedown="scrollMe('tutorial_anchor')">Tutorial</a></li>
-                    <li><a href="#" onclick="return false;" onmousedown="scrollMe('faq_anchor')">Preguntas</a></li>
+                    <li><a id="faq" href="#"><span class=""></span> Preguntas</a></li>
                     <li><a href="#" onclick="return false;" onmousedown="scrollMe('contacto_anchor')">Contacto</a></li>
-                    <li><a id="signin" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a id="signin" href="#"><span class="glyphicon glyphicon-user"></span> Registrese</a></li>
                     <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Modal SignIn-->
+    <!-- Modal Registro-->
     <div class="modal fade" id="myModalSignIn" role="dialog">
         <div class="modal-dialog">
 
@@ -57,32 +59,135 @@
             <div class="modal-content">
                 <div class="modal-header" style="padding:35px 50px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4><span class="glyphicon glyphicon-user"></span> Sign Up</h4>
+                    <h4><span class="glyphicon glyphicon-user"></span> Registrese</h4>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                    <form role="form">
+                    <form method="get" action="" class="section-form">
                         <div class="form-group">
-                            <label for="usrnameSignUp"><span class="glyphicon glyphicon-user"></span> Username</label>
-                            <input type="text" class="form-control" id="usrnameSignUp" placeholder="Enter email">
+                            <!-- Full Name -->
+                            <label for="full_name_id" class="control-label">Dirección de Correo Electrónico</label>
+                            <input type="text" class="form-control" id="email_id" name="email" placeholder="juan@perez.com.ar" onblur="validate(this)">
                         </div>
+
                         <div class="form-group">
-                            <label for="pswSignup"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                            <input type="text" class="form-control" id="pswSignup" placeholder="Enter password">
+                            <!-- Street 1 -->
+                            <label for="street1_id" class="control-label">Contraseña</label>
+                            <input type="password" class="form-control" id="pass_1" name="pass1" placeholder="contraseña" onblur="validate(this)">
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="" checked>Remember me</label>
+
+                        <div class="form-group">
+                            <!-- Street 2 -->
+                            <label for="street2_id" class="control-label">Confirme Contraseña</label>
+                            <input type="password" class="form-control" id="pass_2" name="pass2" placeholder="confirmacion de contraseña" onblur="validate(this)">
                         </div>
-                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+
+                        <div class="form-group">
+                            <!-- Submit Button -->
+                            <button disabled="true" onclick="registrar()" type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                    <p>Not a member? <a href="#">Sign Up</a></p>
-                    <p>Forgot <a href="#">Password?</a></p>
                 </div>
             </div>
 
+        </div>
+    </div>
+    
+    <!--modal de FAQ-->
+    <div class="modal fade" id="myModalFAQ" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="faqTitleModal"><span class=""></span> Preguntas Frecuentes</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                    <div class="panel-group" id="colapsador">
+                        <div class="panel panel-default align_glyph">
+                            <i class="fa fa-comments glyph_icon"></i>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="faqItems faqTitle" href="#collapse1" data-toggle="collapse" data-parent="#colapsador">
+                                        Pregunta 1
+                                    </a>
+                                </div>
+                                <div class="panel-collapse collapse" id="collapse1">
+                                    <div class="panel-body faqItems faqBody">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default align_glyph">
+                            <i class="fa fa-comments glyph_icon"></i>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="faqItems faqTitle" href="#collapse2" data-toggle="collapse" data-parent="#colapsador">
+                                        Pregunta 2
+                                    </a>
+                                </div>
+                                <div class="panel-collapse collapse" id="collapse2">
+                                    <div class="panel-body faqItems faqBody">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default align_glyph">
+                            <i class="fa fa-comments glyph_icon"></i>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="faqItems faqTitle" href="#collapse3" data-toggle="collapse" data-parent="#colapsador">
+                                        Pregunta 3
+                                    </a>
+                                </div>
+                                <div class="panel-collapse collapse" id="collapse3">
+                                    <div class="panel-body faqItems faqBody">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default align_glyph">
+                            <i class="fa fa-comments glyph_icon"></i>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="faqItems faqTitle" href="#collapse4" data-toggle="collapse" data-parent="#colapsador">
+                                        Pregunta 4
+                                    </a>
+                                </div>
+                                <div class="panel-collapse collapse" id="collapse4">
+                                    <div class="panel-body faqItems faqBody">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default align_glyph">
+                            <i class="fa fa-comments glyph_icon"></i>
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a class="faqItems faqTitle" href="#collapse5" data-toggle="collapse" data-parent="#colapsador">
+                                        Pregunta 5
+                                    </a>
+                                </div>
+                                <div class="panel-collapse collapse" id="collapse5">
+                                    <div class="panel-body faqItems faqBody">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -127,199 +232,57 @@
     <section class="section-home" id="section_anchor">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-
+                <div class="col-md-12">
+                    <h1 class="text-center home-titulo ">Buscá tu Médico en Argentina</h1>
                 </div>
-                <div class="col-sm-6">
-                    <form class="section-form">
-                        <div class="form-group">
-                            <!-- Full Name -->
-                            <label for="full_name_id" class="control-label">Full Name</label>
-                            <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer" onblur="validate(this)">
+                <div class="col-md-12">
+
+
+                    <form class="form-inline text-center">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-3">
+                                <div class="form-group form-elementos">
+                                    <select class="form-control form-elementos">
+                                        <option hidden>Privado o por Pregaga </option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <div class="form-group form-elementos">
+                                    <select class="form-control form-elementos">
+                                        <option hidden>Especialista</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <div class="form-group form-elementos">
+                                    <input type="text" class="form-control form-elementos search-query" id="exampleInputEmail2" placeholder="Ingresá Zona, Ciudad o Provincia">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-2">
+                                <div class="form-elementos">
+                                    <button type="submit" class="btn btn-warning form-elementos">Buscar</button>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <!-- Street 1 -->
-                            <label for="street1_id" class="control-label">Street Address 1</label>
-                            <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o" onblur="validate(this)">
-                        </div>
 
-                        <div class="form-group">
-                            <!-- Street 2 -->
-                            <label for="street2_id" class="control-label">Street Address 2</label>
-                            <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc." onblur="validate(this)">
-                        </div>
-
-                        <div class="form-group">
-                            <!-- City-->
-                            <label for="city_id" class="control-label">City</label>
-                            <input type="text" class="form-control" id="city_id" name="city" placeholder="Smallville" onblur="validate(this)">
-                        </div>
-
-                        <div class="form-group">
-                            <!-- State Button -->
-                            <label for="state_id" class="control-label">State</label>
-                            <select class="form-control" id="state_id">
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="DC">District Of Columbia</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="ID">Idaho</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                                <option value="IA">Iowa</option>
-                                <option value="KS">Kansas</option>
-                                <option value="KY">Kentucky</option>
-                                <option value="LA">Louisiana</option>
-                                <option value="ME">Maine</option>
-                                <option value="MD">Maryland</option>
-                                <option value="MA">Massachusetts</option>
-                                <option value="MI">Michigan</option>
-                                <option value="MN">Minnesota</option>
-                                <option value="MS">Mississippi</option>
-                                <option value="MO">Missouri</option>
-                                <option value="MT">Montana</option>
-                                <option value="NE">Nebraska</option>
-                                <option value="NV">Nevada</option>
-                                <option value="NH">New Hampshire</option>
-                                <option value="NJ">New Jersey</option>
-                                <option value="NM">New Mexico</option>
-                                <option value="NY">New York</option>
-                                <option value="NC">North Carolina</option>
-                                <option value="ND">North Dakota</option>
-                                <option value="OH">Ohio</option>
-                                <option value="OK">Oklahoma</option>
-                                <option value="OR">Oregon</option>
-                                <option value="PA">Pennsylvania</option>
-                                <option value="RI">Rhode Island</option>
-                                <option value="SC">South Carolina</option>
-                                <option value="SD">South Dakota</option>
-                                <option value="TN">Tennessee</option>
-                                <option value="TX">Texas</option>
-                                <option value="UT">Utah</option>
-                                <option value="VT">Vermont</option>
-                                <option value="VA">Virginia</option>
-                                <option value="WA">Washington</option>
-                                <option value="WV">West Virginia</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <!-- Zip Code-->
-                            <label for="zip_id" class="control-label">Zip Code</label>
-                            <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####" onblur="validate(this)">
-                        </div>
-
-                        <div class="form-group">
-                            <!-- Submit Button -->
-                            <button type="submit" class="btn btn-primary">Buy!</button>
-                        </div>
                     </form>
-                </div>
 
+
+                </div>
             </div>
         </div>
     </section>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <!-- Empieza FAQ -->
-    <div class="container" id="faq_anchor">
-        <div class="col-xs-12">
-            <div class="panel-group" id="colapsador">
-                <div class="panel panel-default align_glyph">
-                    <i class="fa fa-comments glyph_icon"></i>
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <a class="faqItems faqTitle" href="#collapse1" data-toggle="collapse" data-parent="#colapsador">
-                                Pregunta 1
-                            </a>
-                        </div>
-                        <div class="panel-collapse collapse" id="collapse1">
-                            <div class="panel-body faqItems faqBody">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default align_glyph">
-                    <i class="fa fa-comments glyph_icon"></i>
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <a class="faqItems faqTitle" href="#collapse2" data-toggle="collapse" data-parent="#colapsador">
-                                Pregunta 2
-                            </a>
-                        </div>
-                        <div class="panel-collapse collapse" id="collapse2">
-                            <div class="panel-body faqItems faqBody">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default align_glyph">
-                    <i class="fa fa-comments glyph_icon"></i>
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <a class="faqItems faqTitle" href="#collapse3" data-toggle="collapse" data-parent="#colapsador">
-                                Pregunta 3
-                            </a>
-                        </div>
-                        <div class="panel-collapse collapse" id="collapse3">
-                            <div class="panel-body faqItems faqBody">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default align_glyph">
-                    <i class="fa fa-comments glyph_icon"></i>
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <a class="faqItems faqTitle" href="#collapse4" data-toggle="collapse" data-parent="#colapsador">
-                                Pregunta 4
-                            </a>
-                        </div>
-                        <div class="panel-collapse collapse" id="collapse4">
-                            <div class="panel-body faqItems faqBody">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default align_glyph">
-                    <i class="fa fa-comments glyph_icon"></i>
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <a class="faqItems faqTitle" href="#collapse5" data-toggle="collapse" data-parent="#colapsador">
-                                Pregunta 5
-                            </a>
-                        </div>
-                        <div class="panel-collapse collapse" id="collapse5">
-                            <div class="panel-body faqItems faqBody">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Cierra "container" de FAQ -->
-
-    <!-- Abre Contacto: quien haga contacto tenga en cuenta que el navbar scrollea hasta el id que diga 'contacto_anchor'. -->
-    <div class="container" id="contacto_anchor"> 
-        <a href="#" onclick="return false;" onmousedown="goBack('pageTop_anchor')">CONTACTO</a>
-    </div>
     <!-- Modal -->
     <div class="modal fade" id="myModalAviso" role="dialog">
         <div class="modal-dialog">
@@ -389,7 +352,7 @@
         </div>
     </div>
 
-
+    
 
     <!-- footer -->
 
@@ -413,6 +376,8 @@
     <!--<script type="text/javascript" src="js/scroller.js"></script>-->
     <!-- Validacion del registro -->
     <script type="text/javascript" src="js/validateForm.js"></script>
+    <!-- llamada a sprint 2 el coso ese-->
+    <script type="text/javascript" src="js/registrar.js"></script>
 
 </body>
 

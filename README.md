@@ -53,3 +53,30 @@ CONSIGNAS PARA ENTREGA Lunes 26/9
 
 
 Ambos métodos se llaman por GET. El primero no devuelve nada, el segundo devuelve un JSON. Por ahora este número se compartirá entre todos los trabajos de FSWD.
+
+
+----------------------------------------------------------------------------------------
+
+SPRINT 3
+
+- El cliente pide que funcione la registración del sitio pudiendo guardar los usuarios en un archivo JSON.
+
+- Debe existir una validación del lado del servidor.
+
+- En caso de que haya datos invalidos los datos que estaban bien deben seguirse viendo en pantalla.
+
+- El cliente pide que funcione el login.
+
+- Debe estar la opción de "Recordar usuario"
+
+- El cliente pide que el código este organizado bajo el paradigma de Programación Orientado a Objetos para mejorar la comunicación.
+
+- El cliente sugiere tener en cuenta que a futuro podríamos almacenar los usuarios bajo otro soporte distinto a JSON.
+
+
+
+Optativos:
+
+
+
+- Al cliente le gustaría que funcione la opción de "Olvidé mi contraseña"

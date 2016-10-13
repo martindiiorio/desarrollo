@@ -7,8 +7,42 @@
 		padding-top: 1em;
 }
 
+.home-titulo {
+    color: #fff;
+    text-shadow: 4px 2px 4px rgba(0, 0, 0, .75);
+    margin-bottom: 2em;
+}
+
 .section-home {
-	background: url('../img/dondeDuele-corporativo.png') no-repeat;
+	background:
+      /* top, transparent red, faked with gradient */
+      linear-gradient(
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, .3)
+      ),
+      /* bottom, image */
+      url('../img/dondeduele-corpo.jpg') no-repeat center center fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    height: 583px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-elementos {
+    width: 100% !important;
+}
+
+.search-query {
+    padding-left: 29px;
+    background-image: url(http://www.freeiconspng.com/uploads/orange-localization-icon-11.png);
+    background-repeat: no-repeat;
+    background-size: 22px;
+    background-position: 2px;
 }
 
 /*FAQ CSS*/
@@ -63,4 +97,8 @@
 
 .pointer {
 	cursor: pointer;
+}
+
+#faqTitleModal {
+	text-align: center;
 }
