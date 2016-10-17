@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">dóndeDuele</a>
+                <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-home"></span>    dóndeDuele</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -41,10 +41,10 @@
                             <li><a href="#">Page 1-3</a></li>
                         </ul>
                     </li> -->
-                    <li><a href="#" onclick="return false;" onmousedown="scrollMe('tutorial_anchor')">Tutorial</a></li>
+                    <li><a href="#">Tutorial</a></li>
                     <li><a id="faq" href="#"><span class=""></span> Preguntas</a></li>
-                    <li><a href="#" onclick="return false;" onmousedown="scrollMe('contacto_anchor')">Contacto</a></li>
-                    <li><a id="signin" href="#"><span class="glyphicon glyphicon-user"></span> Registrese</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a id="signin" href="#"><span class="glyphicon glyphicon-user;"></span> Registrese</a></li>
                     <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
@@ -62,28 +62,33 @@
                     <h4><span class="glyphicon glyphicon-user"></span> Registrese</h4>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                    <form method="get" action="" class="section-form">
+                    <form id="signinForm" class="section-form">
                         <div class="form-group">
-                            <!-- Full Name -->
-                            <label for="full_name_id" class="control-label">Dirección de Correo Electrónico</label>
-                            <input type="text" class="form-control" id="email_id" name="email" placeholder="juan@perez.com.ar" onblur="validate(this)">
+                            <!-- nombre -->
+                            <label for="nombre" class="control-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre_1" name="nombre" placeholder="nombre">
+                        </div>
+                        <div class="form-group">
+                            <!-- email -->
+                            <label for="email" class="control-label">Dirección de Correo Electrónico</label>
+                            <input type="text" class="form-control" id="email_id" name="email" placeholder="juan@perez.com.ar">
                         </div>
 
                         <div class="form-group">
-                            <!-- Street 1 -->
-                            <label for="street1_id" class="control-label">Contraseña</label>
-                            <input type="password" class="form-control" id="pass_1" name="pass1" placeholder="contraseña" onblur="validate(this)">
+                            <!-- contraseña 1 -->
+                            <label for="pass1" class="control-label">Contraseña</label>
+                            <input type="password" class="form-control" id="pass_1" name="pass1" placeholder="contraseña">
                         </div>
 
                         <div class="form-group">
-                            <!-- Street 2 -->
-                            <label for="street2_id" class="control-label">Confirme Contraseña</label>
-                            <input type="password" class="form-control" id="pass_2" name="pass2" placeholder="confirmacion de contraseña" onblur="validate(this)">
+                            <!-- contraseña 2 -->
+                            <label for="pass2" class="control-label">Confirme Contraseña</label>
+                            <input type="password" class="form-control" id="pass_2" name="pass2" placeholder="confirmacion de contraseña">
                         </div>
 
                         <div class="form-group">
                             <!-- Submit Button -->
-                            <button disabled="true" onclick="registrar()" type="submit" class="btn btn-primary">Registrar</button>
+                            <input type="submit" id="submitBtn" class="btn btn-primary" value="Registrar">
                         </div>
                     </form>
                 </div>
@@ -291,7 +296,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Aviso de privacidadr</h4>
+                    <h4 class="modal-title">Aviso de privacidad</h4>
                 </div>
                 <div class="modal-body">
                     <div class="col-xs-12">
@@ -370,14 +375,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- JQuery Validate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
     <!-- modalesJS -->
     <script type="text/javascript" src="js/modals.js"></script>
     <!-- scrollerJS: removido hasta arreglar el infinite scroll -->
     <!--<script type="text/javascript" src="js/scroller.js"></script>-->
     <!-- Validacion del registro -->
-    <script type="text/javascript" src="js/validateForm.js"></script>
-    <!-- llamada a sprint 2 el coso ese-->
-    <script type="text/javascript" src="js/registrar.js"></script>
+    <script type="text/javascript" src="js/validation.js"></script>
 
 </body>
 
