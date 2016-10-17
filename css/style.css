@@ -8,27 +8,10 @@
 }
 
 .home-titulo {
-    color: #fff;
+    color: #f0ad4e;
     text-shadow: 4px 2px 4px rgba(0, 0, 0, .75);
-    margin-bottom: 2em;
-}
-
-.section-home {
-	background:
-      /* top, transparent red, faked with gradient */
-      linear-gradient(
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, .3)
-      );
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    display: flex;
-    height: 583px;
-    align-items: center;
-    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .form-elementos {
