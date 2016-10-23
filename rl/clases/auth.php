@@ -1,6 +1,6 @@
 <?php
 
-require_once("userRepository.php");
+require_once("rl/clases/userRepository.php");
 
 class Auth {
 

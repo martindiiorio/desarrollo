@@ -1,6 +1,6 @@
 <?php
 
-require_once("userRepository.php");
+require_once("rl/clases/userRepository.php");
 
 class Validar {
 
@@ -33,31 +33,27 @@ class Validar {
         {
             $errores[] = "Falta el nombre";
         }
-        if (trim($miUsuario["apellido"]) == "")
-        {
-            $errores[] = "Falta el apellido";
-        }
-        if (trim($miUsuario["password"]) == "")
+        if (trim($miUsuario["pass1"]) == "")
         {
             $errores[] = "Falta la pass";
         }
-        if (trim($miUsuario["cpass"]) == "")
+        if (trim($miUsuario["pass2"]) == "")
         {
             $errores[] = "Falta el cpass";
         }
-        if ($miUsuario["password"] != $miUsuario["cpass"])
+        if ($miUsuario["pass1"] != $miUsuario["pass2"])
         {
-            $errores[] = "Pass y Cpass son distintas";
+            $errores[] = "Pass y pass2 son distintas";
         }
-        if ($miUsuario["mail"] == "")
+        if ($miUsuario["email"] == "")
         {
             $errores[] = "Falta el mail";
         }
-        if (!filter_var($miUsuario["mail"], FILTER_VALIDATE_EMAIL))
+        if (!filter_var($miUsuario["email"], FILTER_VALIDATE_EMAIL))
         {
             $errores[] = "El mail tiene forma fea";
         }
-        if ($this->userRepository->existeElMail($miUsuario["mail"]))
+        if ($this->userRepository->existeElMail($miUsuario["email"]))
         {
             $errores[] = "Usuario ya registrado";
         }
@@ -68,15 +64,15 @@ class Validar {
     {
         $errores = [];
 
-        if (trim($_POST["mail"]) == "") {
+        if (trim($_POST["usrnameLogin"]) == "") {
             $errores[] = "No pusiste email";
-        } else if (!$this->userRepository->existeElMail($_POST["mail"])) {
+        } else if (!$this->userRepository->existeElMail($_POST["usrnameLogin"])) {
             $errores[] = "El mail no existe";
-        } else if (!$this->userRepository->usuarioValido($_POST["mail"], $_POST["password"])) {
+        } else if (!$this->userRepository->usuarioValido($_POST["usrnameLogin"], $_POST["pswLogin"])) {
             $errores [] = "El usuario no es valido";
         }
 
-        if (trim($_POST["password"]) == "") {
+        if (trim($_POST["pswLogin"]) == "") {
             $errores[] = "No pusiste contrase&ntilde;a";
         }
 

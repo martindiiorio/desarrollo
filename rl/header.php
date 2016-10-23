@@ -1,10 +1,10 @@
-<?php 
-	require_once("soporte.php");
+<?php
+	require_once("rl/soporte.php");
 ?>
 <header style="background-color:yellow">
 	<a href="index.php">Home</a>
 	<div style="display:inline;float:right;">
-		<?php if ($auth->estaLogueado()) { 
+		<?php if ($auth->estaLogueado()) {
 			include("headerLogueado.php");
 		} else {
 			include("headerNoLogueado.php");

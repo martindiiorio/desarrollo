@@ -1,7 +1,7 @@
 <?php
 
-require_once("userRepository.php");
-require_once("usuario.php");
+require_once("rl/clases/userRepository.php");
+require_once("rl/clases/usuario.php");
 
 class UserJSONRepository extends UserRepository {
 
@@ -37,10 +37,8 @@ class UserJSONRepository extends UserRepository {
 		$usuarioArray = [];
 
 		$usuarioArray["nombre"] = $miUsuario->getNombre();
-		$usuarioArray["apellido"] = $miUsuario->getApellido();
 		$usuarioArray["password"] = $miUsuario->getPassword();
 		$usuarioArray["mail"] = $miUsuario->getMail();
-		$usuarioArray["sexo"] = $miUsuario->getSexo();
 		$usuarioArray["id"] = $miUsuario->getId();
 
 

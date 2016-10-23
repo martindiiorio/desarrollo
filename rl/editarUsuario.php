@@ -1,5 +1,5 @@
 <?php
-	require_once("soporte.php");
+	require_once("rl/soporte.php");
 
 	if (!$auth->estaLogueado())
 	{

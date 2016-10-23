@@ -1,7 +1,7 @@
 <?php
 
-require_once("repository.php");
-require_once("userJsonRepository.php");
+require_once("rl/clases/repository.php");
+require_once("rl/clases/userJsonRepository.php");
 
 class JSONRepository extends Repository {
 	private $userRepository;

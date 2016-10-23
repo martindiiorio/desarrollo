@@ -1,40 +1,12 @@
 <?php
-	require_once("soporte.php");
+	require_once("rl/soporte.php");
 
 	if ($auth->estaLogueado())
 	{
 		header("location:index.php");exit;
 	}
 
-	$pNombre = "";
-	$pApellido = "";
-	$pMail = "";
 
-	$sexos = ["Masculino", "Femenino", "Otro"];
-
-	if ($_POST)
-	{
-		$pNombre = $_POST["nombre"];
-		$pApellido = $_POST["apellido"];
-		$pMail = $_POST["mail"];
-		//Acá vengo si me enviaron el form
-
-		//Validar
-		$errores = $validar->validarUsuario($_POST);
-
-		// Si no hay errores....
-		if (empty($errores))
-		{
-			$miUsuarioArr = $_POST;
-			$usuario = new Usuario($_POST);
-			$usuario->setPassword($_POST["password"]);
-			// Guardar al usuario en un JSON
-			$repositorio->getUserRepository()->guardarUsuario($usuario);
-			$usuario->guardarImagen($usuario);
-			// Reenviarlo a la felicidad
-			header("location:index.php");exit;
-		}
-	}
 ?>
 
 <html>
@@ -44,17 +16,7 @@
 	<body>
 		<h1>Registrate!</h1>
 		<form action="register.php" method="POST" enctype="multipart/form-data">
-			<?php if (!empty($errores)) { ?>
-				<div style="width:300px;background-color:red">
-					<ul>
-						<?php foreach ($errores as $error) { ?>
-							<li>
-								<?php echo $error ?>
-							</li>
-						<?php } ?>
-					</ul>
-				</div>
-			<?php } ?>
+
 			<div>
 				<label for="nombre">Nombre:</label>
 				<input id="nombre" type="text" name="nombre" value="<?php echo $pNombre ?>"></input>

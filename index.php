@@ -1,3 +1,7 @@
+<?php require_once("registro.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +40,12 @@
                     <li><a href="#">Tutorial</a></li>
                     <li><a id="faq" href="#"><span class=""></span> Preguntas</a></li>
                     <li><a href="#">Contacto</a></li>
-                    <li><a id="signin" href="#"><span class="glyphicon glyphicon-user;"></span> Registrese</a></li>
-                    <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <?php if (!$auth->estaLogueado()) { ?>
+                      <li><a id="signin" href="#"><span class="glyphicon glyphicon-user;"></span> Registrese</a></li>
+                      <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <?php } else { ?>
+                      <li><a id="logout" href="#"><span class="glyphicon glyphicon-log-out"></span>Logout <?php echo $nombre ?></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -54,7 +62,20 @@
                     <h4><span class="glyphicon glyphicon-user"></span> Registrese</h4>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                    <form id="signinForm" class="section-form">
+                    <form id="signinForm" class="section-form" method="post" action="index.php">
+                        <div class="form-group">
+                          <?php if (!empty($errores)) { ?>
+                    				<div style="width:300px;background-color:red">
+                    					<ul>
+                    						<?php foreach ($errores as $error) { ?>
+                    							<li>
+                    								<?php echo $error ?>
+                    							</li>
+                    						<?php } ?>
+                    					</ul>
+                    				</div>
+                    			<?php } ?>
+                        </div>
                         <div class="form-group">
                             <!-- nombre -->
                             <label for="nombre" class="control-label" name="name">Nombre</label>
@@ -91,7 +112,7 @@
 
         </div>
     </div>
-    
+
     <!--modal de FAQ-->
     <div class="modal fade" id="myModalFAQ" role="dialog">
         <div class="modal-dialog">
@@ -200,18 +221,18 @@
                     <h4><span class="glyphicon glyphicon-log-in"></span> Login</h4>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                    <form role="form">
+                    <form role="form" method="post" action="index.php">
                         <div class="form-group">
                             <label for="usrnameLogin"><span class="glyphicon glyphicon-user"></span> Username</label>
-                            <input type="text" class="form-control" id="usrnameLogin" placeholder="Enter email">
+                            <input type="text" class="form-control" name="usrnameLogin" id="usrnameLogin" placeholder="Enter email">
                         </div>
                         <div class="form-group">
                             <label for="pswLogin"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                            <input type="text" class="form-control" id="pswLogin" placeholder="Enter password">
+                            <input type="password" class="form-control" name="pswLogin" id="pswLogin" placeholder="Enter password">
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="" checked>Remember me</label>
+                                <input type="checkbox" value="" name="recordame" checked>Remember me</label>
                         </div>
                         <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
                     </form>
@@ -284,7 +305,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <!-- Modal -->
     <div class="modal fade" id="myModalAviso" role="dialog">
@@ -355,7 +376,7 @@
         </div>
     </div>
 
-    
+
 
     <!-- footer -->
 
@@ -382,6 +403,11 @@
     <!-- Validacion del registro -->
     <script type="text/javascript" src="js/validation.js"></script>
     <script type="text/javascript" src="js/coverr.js"></script>
+
+    <?php if ($_POST["pass2"] && !$auth->estaLogueado()) { ?>
+      <script> $("#myModalSignIn").modal(); </script>
+    <?php } ?>
+
 
 </body>
 

@@ -1,5 +1,5 @@
 <?php
-	require_once("soporte.php");
+	require_once("rl/soporte.php");
 
 	if ($auth->estaLogueado())
 	{
@@ -19,7 +19,7 @@
 			$usuario = $repositorio->getUserRepository()->getUsuarioByMail($_POST["mail"]);
 
 			$auth->loguear($usuario);
-			
+
 			// Si me puso que lo recuerde, recordarlo
 			if (isset($_POST["recordame"])) {
 				//recordarlo
