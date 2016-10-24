@@ -2,14 +2,13 @@
 
 class Usuario {
 
-	private $id;
-	private $nombre;
-	private $password;
-	private $mail;
+	public $id;
+	public $nombre;
+	public $password;
+	public $mail;
 
 	public function __construct(Array $miUsuario)
 	{
-		$this->id = $miUsuario["id"];
 		$this->nombre = $miUsuario["nombre"];
 		$this->password = $miUsuario["password"];
 		$this->mail = $miUsuario["mail"];

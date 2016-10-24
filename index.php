@@ -1,4 +1,53 @@
-<?php require_once("registro.php");
+<?php
+
+require_once("rl/soporte.php");
+
+$nombre = "";
+$errores = "";
+
+if ($auth->estaLogueado()) {
+    $user = $auth->getUsuarioLogueado();
+
+    $nombre = $user->getNombre();
+}
+
+  $pNombre = "";
+  $pMail = "";
+
+if ($_POST && $_POST["origen"] == "register") {
+    $pNombre = $_POST["nombre"];
+    $pMail = $_POST["mail"];
+
+    @$errores = $validar->validarUsuario($_POST);
+
+    // nuevo usuario
+    if (empty($errores)) {
+      $miUsuarioArr = $_POST;
+      $usuario = new Usuario($_POST);
+      $usuario->setPassword($_POST["password"]);
+      // Guardar al usuario en un JSON
+      $repositorio->getUserRepository()->guardarUsuario($usuario);
+    }
+}
+
+if ($_POST && @$_POST["origen" == "login"]) {
+    $errores = $validar->validarLogin();
+
+    if (empty($errores)) {
+
+        // Loguearlo
+        $usuario = $repositorio->getUserRepository()->getUsuarioByMail($_POST["usrnameLogin"]);
+
+        $auth->loguear($usuario);
+
+        // Si me puso que lo recuerde, recordarlo
+        if (isset($_POST["recordame"])) {
+            //recordarlo
+            setcookie("usuarioLogueado", $usuario->getId(), time() + 60 * 60 * 24 * 3);
+            //header("location:index.php"); exit;
+        }
+    }
+}
 
 ?>
 
@@ -44,7 +93,7 @@
                       <li><a id="signin" href="#"><span class="glyphicon glyphicon-user;"></span> Registrese</a></li>
                       <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <?php } else { ?>
-                      <li><a id="logout" href="#"><span class="glyphicon glyphicon-log-out"></span>Logout <?php echo $nombre ?></a></li>
+                      <li><a id="logout" href="#"><span class="glyphicon glyphicon-log-out"></span>  Logout <?php echo $nombre ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -79,28 +128,29 @@
                         <div class="form-group">
                             <!-- nombre -->
                             <label for="nombre" class="control-label" name="name">Nombre</label>
-                            <input type="text" class="form-control" id="nombre_1" name="nombre" placeholder="nombre">
+                            <input type="text" class="form-control" id="nombre_1" name="nombre" placeholder="nombre" value="<?php echo $pNombre ?>">
                         </div>
                         <div class="form-group">
                             <!-- email -->
                             <label for="email" class="control-label" name="e-mail">Dirección de Correo Electrónico</label>
-                            <input type="text" class="form-control" id="email_id" name="email" placeholder="juan@perez.com.ar">
+                            <input type="text" class="form-control" id="email_id" name="mail" placeholder="juan@perez.com.ar" value="<?php echo $pMail ?>">
                         </div>
 
                         <div class="form-group">
                             <!-- contraseña 1 -->
                             <label for="pass1" class="control-label" name="pass">Contraseña</label>
-                            <input type="password" class="form-control" id="pass_1" name="pass1" placeholder="contraseña">
+                            <input type="password" class="form-control" id="pass_1" name="password" placeholder="contraseña">
                         </div>
 
                         <div class="form-group">
                             <!-- contraseña 2 -->
                             <label for="pass2" class="control-label" name="cpass">Confirme Contraseña</label>
-                            <input type="password" class="form-control" id="pass_2" name="pass2" placeholder="confirmacion de contraseña">
+                            <input type="password" class="form-control" id="pass_2" name="cpass" placeholder="confirmacion de contraseña">
                         </div>
 
                         <div class="form-group">
                             <!-- Submit Button -->
+                            <input type="hidden" name="origen" value="register">
                             <input type="submit" id="submitBtn" class="btn btn-primary" value="Registrar">
                         </div>
                     </form>
@@ -233,6 +283,7 @@
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" value="" name="recordame" checked>Remember me</label>
+                                <input type="hidden" name="origen" value="login">
                         </div>
                         <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
                     </form>
@@ -401,11 +452,11 @@
     <!-- scrollerJS: removido hasta arreglar el infinite scroll -->
     <!--<script type="text/javascript" src="js/scroller.js"></script>-->
     <!-- Validacion del registro -->
-    <script type="text/javascript" src="js/validation.js"></script>
+    <!--<script type="text/javascript" src="js/validation.js"></script>-->
     <script type="text/javascript" src="js/coverr.js"></script>
 
-    <?php if ($_POST["pass2"] && !$auth->estaLogueado()) { ?>
-      <script> $("#myModalSignIn").modal(); </script>
+    <?php if (!empty($errores)) { ?>
+        <script> $("#myModalSignIn").modal(); </script>
     <?php } ?>
 
 

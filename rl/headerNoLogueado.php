@@ -1,1 +1,0 @@
-Hola visitante! - <a href="login.php">Login</a> <a href="register.php">Registrate</a>

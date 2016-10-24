@@ -29,7 +29,7 @@ class UserJSONRepository extends UserRepository {
 
 		$miUsuarioArray = $this->usuarioToArray($miUsuario);
 		$usuarioJSON = json_encode($miUsuarioArray);
-		file_put_contents("usuarios.json", $usuarioJSON . PHP_EOL, FILE_APPEND);
+		file_put_contents("rl/usuarios.json", $usuarioJSON . PHP_EOL, FILE_APPEND);
 	}
 
 
@@ -51,15 +51,15 @@ class UserJSONRepository extends UserRepository {
 
 	private function traerNuevoId()
 	{
-		if (!file_exists("usuarios.json"))
+		if (!file_exists("rl/usuarios.json"))
 		{
 			return 1;
 		}
 
-		$usuarios = file_get_contents("usuarios.json");
+		$usuarios = file_get_contents("rl/usuarios.json");
 
 		$usuariosArray = explode(PHP_EOL, $usuarios);
-		$ultimoUsuario = $usuariosArray[count($usuariosArray) - 2 ];
+		@$ultimoUsuario = $usuariosArray[count($usuariosArray) - 2 ];
 		$ultimoUsuarioArray = json_decode($ultimoUsuario, true);
 
 		return $ultimoUsuarioArray["id"] + 1;
@@ -110,7 +110,7 @@ class UserJSONRepository extends UserRepository {
 
 	public function getAllUsers()
 	{
-		$usuarios = file_get_contents("usuarios.json");
+		$usuarios = file_get_contents("rl/usuarios.json");
 
 		$usuariosArray = explode(PHP_EOL, $usuarios);
 
