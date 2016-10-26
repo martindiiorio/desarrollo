@@ -48,6 +48,18 @@ class Auth {
         $_SESSION["usuarioLogueado"] = $usuario;
     }
 
+    public function estaLogueado()
+    {
+        return isset($_SESSION["usuarioLogueado"]);
+    }
+
+    public function getUsuarioLogueado() {
+        return $_SESSION["usuarioLogueado"];
+    }
+
+    /*
+    Comment out hasta que se defina mejor como hacer el logout. Por ahora se reemplaza
+    este pedazo de la clase Auth por logout.php con redirect a index.php
     public function logout()
     {
         session_destroy();
@@ -57,14 +69,5 @@ class Auth {
     private function unsetCookie($cookie)
     {
         setcookie($cookie, "", -1);
-    }
-
-    public function estaLogueado()
-    {
-        return isset($_SESSION["usuarioLogueado"]);
-    }
-
-    public function getUsuarioLogueado() {
-        return $_SESSION["usuarioLogueado"];
-    }
+    }*/
 }

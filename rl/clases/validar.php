@@ -71,7 +71,6 @@ class Validar {
         } else if (!$this->userRepository->usuarioValido($_POST["usrnameLogin"], $_POST["pswLogin"])) {
             $errores [] = "El usuario no es valido";
         }
-
         if (trim($_POST["pswLogin"]) == "") {
             $errores[] = "No pusiste contrase&ntilde;a";
         }

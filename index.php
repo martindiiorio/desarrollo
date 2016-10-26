@@ -1,52 +1,13 @@
 <?php
 
 require_once("rl/soporte.php");
-
-$nombre = "";
-$errores = "";
+require_once('rl/register.php');
+require_once('rl/login.php');
 
 if ($auth->estaLogueado()) {
     $user = $auth->getUsuarioLogueado();
 
     $nombre = $user->getNombre();
-}
-
-  $pNombre = "";
-  $pMail = "";
-
-if ($_POST && $_POST["origen"] == "register") {
-    $pNombre = $_POST["nombre"];
-    $pMail = $_POST["mail"];
-
-    @$errores = $validar->validarUsuario($_POST);
-
-    // nuevo usuario
-    if (empty($errores)) {
-      $miUsuarioArr = $_POST;
-      $usuario = new Usuario($_POST);
-      $usuario->setPassword($_POST["password"]);
-      // Guardar al usuario en un JSON
-      $repositorio->getUserRepository()->guardarUsuario($usuario);
-    }
-}
-
-if ($_POST && @$_POST["origen" == "login"]) {
-    $errores = $validar->validarLogin();
-
-    if (empty($errores)) {
-
-        // Loguearlo
-        $usuario = $repositorio->getUserRepository()->getUsuarioByMail($_POST["usrnameLogin"]);
-
-        $auth->loguear($usuario);
-
-        // Si me puso que lo recuerde, recordarlo
-        if (isset($_POST["recordame"])) {
-            //recordarlo
-            setcookie("usuarioLogueado", $usuario->getId(), time() + 60 * 60 * 24 * 3);
-            //header("location:index.php"); exit;
-        }
-    }
 }
 
 ?>
@@ -93,7 +54,7 @@ if ($_POST && @$_POST["origen" == "login"]) {
                       <li><a id="signin" href="#"><span class="glyphicon glyphicon-user;"></span> Registrese</a></li>
                       <li><a id="login" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <?php } else { ?>
-                      <li><a id="logout" href="#"><span class="glyphicon glyphicon-log-out"></span>  Logout <?php echo $nombre ?></a></li>
+                      <li><a id="logout" href="rl/logout.php">Logout <?php echo $nombre ?>    <span class="glyphicon glyphicon-log-out"></span></a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -113,7 +74,7 @@ if ($_POST && @$_POST["origen" == "login"]) {
                 <div class="modal-body" style="padding:40px 50px;">
                     <form id="signinForm" class="section-form" method="post" action="index.php">
                         <div class="form-group">
-                          <?php if (!empty($errores)) { ?>
+                          <?php if (!empty($errores) && $_POST["origen"] == "register") { ?>
                     				<div style="width:300px;background-color:red">
                     					<ul>
                     						<?php foreach ($errores as $error) { ?>
@@ -272,6 +233,19 @@ if ($_POST && @$_POST["origen" == "login"]) {
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
                     <form role="form" method="post" action="index.php">
+                        <div class="form-group">
+                        <?php if (!empty($errores) && $_POST["origen"] == "login") { ?>
+                            <div style="width:300px;background-color:red">
+                                <ul>
+                                    <?php foreach ($errores as $error) { ?>
+                                        <li>
+                                            <?php echo $error ?>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
+                        </div>
                         <div class="form-group">
                             <label for="usrnameLogin"><span class="glyphicon glyphicon-user"></span> Username</label>
                             <input type="text" class="form-control" name="usrnameLogin" id="usrnameLogin" placeholder="Enter email">
@@ -455,8 +429,13 @@ if ($_POST && @$_POST["origen" == "login"]) {
     <!--<script type="text/javascript" src="js/validation.js"></script>-->
     <script type="text/javascript" src="js/coverr.js"></script>
 
-    <?php if (!empty($errores)) { ?>
+    <?php
+    if (!empty($errores) && $_POST["origen"] == "register") { ?>
         <script> $("#myModalSignIn").modal(); </script>
+    <?php }
+        
+    if (!empty($errores) && $_POST["origen"] == "login") { ?>
+        <script> $("#myModalLogIn").modal(); </script>
     <?php } ?>
 
 
