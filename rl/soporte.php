@@ -1,9 +1,11 @@
 <?php
 
 require_once("rl/clases/jsonRepository.php");
+require_once("rl/clases/sqlRepository.php");
 require_once("rl/clases/auth.php");
 require_once("rl/clases/validar.php");
-require_once("rl/clases/createUserTable.php")
+require_once("rl/clases/table.php");
+require_once("rl/clases/createUserTable.php");
 require_once("rl/clases/usuario.php");
 
 $tipoRepositorio = "sql";
@@ -18,6 +20,4 @@ if ($tipoRepositorio == "sql") {
 
 $auth = Auth::getInstance($repositorio->getUserRepository());
 $validar = Validar::getInstance($repositorio->getUserRepository());
-
-// $repositorio->setConnection();
-// $repositorio->createTable();
+$table = Table::getInstance($repositorio->getUserRepository());

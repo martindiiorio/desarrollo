@@ -28,7 +28,7 @@ class UserSQLRepository extends UserRepository {
   public function setConnection() { //ver si se puede abstraer a userRepository como una funciona publica para quien hereda
     $dbsn = 'mysql:host=localhost;dbname=dondeDuele;charset=utf8mb4;port:3306';
     $db_user = 'root';
-    $db_pass = 'root';
+    $db_pass = '';
 
     try {
         $db = new PDO($dbsn, $db_user, $db_pass);
@@ -49,7 +49,7 @@ class UserSQLRepository extends UserRepository {
     }
 
     try {
-      $this->query = $this->prepareSaveQuery();
+      $this->query = $this->prepareSaveQuery($miUsuarioArray);
       $this->query->execute();
     }
       catch (PDOException $Exception) {
@@ -58,13 +58,24 @@ class UserSQLRepository extends UserRepository {
 
   }
 
-  private function prepareSaveQuery() {
+  private function getConnection() {
+    $this->setDatabaseData();
+    try {
+        $this->db = new PDO($this->dbsn, $this->db_user, $this->db_pass);
+    }
+        catch (PDOException $Exception) {
+            return $Exception->getMessage();
+        }
+    return true;
+  }
+
+  private function prepareSaveQuery($nombre, $email, $password) {
       $stmt = "insert into paciente(nombre, email, password) values ('$nombre', '$email', '$password')";
       $this->query = $this->db->prepare($stmt);
   }
 
 	private function usuarioToArray(Usuario $miUsuario) {
-		$usuarioArray = [];
+		$usuarioArray = Array();
 
 		$usuarioArray["nombre"] = $miUsuario->getNombre();
 		$usuarioArray["password"] = $miUsuario->getPassword();
@@ -123,22 +134,32 @@ class UserSQLRepository extends UserRepository {
 	}
 
 	public function getAllUsers() {
-    $users = $db->query("select paciente.id from paciente");
+    $users = $this->db;
+    $users->query("select paciente.id from paciente");
     $results = $users->fetchAll(PDO::FETCH_ASSOC);
     return $results;
 	}
+
+  public function createTable() {
+      $stmt = "CREATE TABLE user (
+        id      			INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        nombre  			VARCHAR(63) NOT NULL,
+        email  			VARCHAR(63) NOT NULL,
+        password  			VARCHAR(63) NOT NULL
+        )";
+      $query = $this->db->prepare($stmt);
+      $query->execute();
+  }
 }
 
 
-
-
-if ($_POST && $_POST["origen"] === "register") {
-    $titulo = $_POST['titulo'];
-    $rating = $_POST['rating'];
-    $premios = $_POST['premios'];
-    $duracion = $_POST['duracion'];
-    $genero = $_POST['genero'];
-
-}
-
+//
+// if ($_POST && $_POST["origen"] === "register") {
+//     $titulo = $_POST['titulo'];
+//     $rating = $_POST['rating'];
+//     $premios = $_POST['premios'];
+//     $duracion = $_POST['duracion'];
+//     $genero = $_POST['genero'];
+//
+// }
 ?>

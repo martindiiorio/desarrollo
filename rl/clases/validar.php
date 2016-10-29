@@ -27,7 +27,7 @@ class Validar {
 
     public function validarUsuario($miUsuario)
     {
-        $errores = [];
+        $errores = Array();
 
         if (trim($miUsuario["nombre"]) == "")
         {
@@ -62,7 +62,7 @@ class Validar {
 
     function validarLogin()
     {
-        $errores = [];
+        $errores = Array();
 
         if (trim($_POST["usrnameLogin"]) == "") {
             $errores[] = "No pusiste email";

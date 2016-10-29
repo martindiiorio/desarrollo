@@ -4,6 +4,9 @@ require_once("rl/clases/userRepository.php");
 require_once("rl/clases/usuario.php");
 
 class UserJSONRepository extends UserRepository {
+	public function setConnection() {}
+
+	public function createTable() {}
 
 	public function existeElMail($mail)
 	{
@@ -34,7 +37,7 @@ class UserJSONRepository extends UserRepository {
 
 
 	private function usuarioToArray(Usuario $miUsuario) {
-		$usuarioArray = [];
+		$usuarioArray = Array();
 
 		$usuarioArray["nombre"] = $miUsuario->getNombre();
 		$usuarioArray["password"] = $miUsuario->getPassword();
@@ -121,7 +124,7 @@ class UserJSONRepository extends UserRepository {
 
 	private function muchosArraysAMuchosUsuarios(Array $usuariosArray)
 	{
-		$usuarios = [];
+		$usuarios = Array();
 
 		foreach ($usuariosArray as $usuarioArray) {
 			$usuarios[] = $this->arrayToUsuario(json_decode($usuarioArray,1));
