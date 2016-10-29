@@ -4,26 +4,26 @@ require_once("rl/clases/userRepository.php");
 require_once("rl/clases/usuario.php");
 
 class UserSQLRepository extends UserRepository {
-  private $db;
   private $dbsn;
   private $db_user;
   private $db_pass;
-  private $query;
 
-	public function existeElMail($mail)
-	{
-		$usuariosArray = $this->getAllUsers();
+  public function existeElMail($mail) {}
 
-		foreach ($usuariosArray as $key => $usuario) {
-
-			if ($mail == $usuario->getMail())
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}
+	// public function existeElMail($mail)
+	// {
+	// 	$usuariosArray = $this->getAllUsers();
+  //
+	// 	foreach ($usuariosArray as $key => $usuario) {
+  //
+	// 		if ($mail == $usuario->getMail())
+	// 		{
+	// 			return true;
+	// 		}
+	// 	}
+  //
+	// 	return false;
+	// }
 
   public function setConnection() { //ver si se puede abstraer a userRepository como una funciona publica para quien hereda
     $dbsn = 'mysql:host=localhost;dbname=dondeDuele;charset=utf8mb4;port:3306';
@@ -34,44 +34,59 @@ class UserSQLRepository extends UserRepository {
         $db = new PDO($dbsn, $db_user, $db_pass);
     }
         catch (PDOException $Exception) {
-            return $Exception->getMessage();
+            return false;
+            //return $Exception->getMessage();
         }
-    return true;
+    return $db;
+  }
+
+  public function objectToArray($usuario) {
+    $result = Array();
+
+    $nombre = $usuario->getNombre();
+    $mail = $usuario->getMail();
+    $password = $usuario->getPassword();
+
+    $result[] = $nombre;
+    $result[] = $mail;
+    $result[] = $password;
+
+    return $result;
   }
 
   public function guardarUsuario(Usuario $miUsuario) {
-    $miUsuarioArray = $this->usuarioToArray($miUsuario);
-
     $connection = $this->setConnection();
+    if ($connection) {
 
-    if (!$connection) {
-      echo $connection;
-    }
+      $newUser = $this->objectToArray($miUsuario);
 
-    try {
-      $this->query = $this->prepareSaveQuery($miUsuarioArray);
-      $this->query->execute();
-    }
-      catch (PDOException $Exception) {
-        echo $Exception->getMessage();
+      try {
+        $stmt = $this->setQuery($newUser);
+        $query = $connection->prepare($stmt);
+        $query->execute();
       }
-
-  }
-
-  private function getConnection() {
-    $this->setDatabaseData();
-    try {
-        $this->db = new PDO($this->dbsn, $this->db_user, $this->db_pass);
-    }
         catch (PDOException $Exception) {
-            return $Exception->getMessage();
+          echo $Exception->getMessage();
         }
-    return true;
+    }
+
   }
 
-  private function prepareSaveQuery($nombre, $email, $password) {
-      $stmt = "insert into paciente(nombre, email, password) values ('$nombre', '$email', '$password')";
-      $this->query = $this->db->prepare($stmt);
+  // private function getConnection() {
+  //   $this->setDatabaseData();
+  //   try {
+  //       $this->db = new PDO($this->dbsn, $this->db_user, $this->db_pass);
+  //   }
+  //       catch (PDOException $Exception) {
+  //           return $Exception->getMessage();
+  //       }
+  //   return true;
+  // }
+
+  private function setQuery($user) {
+      $stmt = "insert into user(nombre, email, password) VALUES ('$user[0]', '$user[1]', '$user[2]')";
+      echo $stmt;
+      return $stmt;
   }
 
 	private function usuarioToArray(Usuario $miUsuario) {
@@ -133,22 +148,24 @@ class UserSQLRepository extends UserRepository {
 		return null;
 	}
 
-	public function getAllUsers() {
-    $users = $this->db;
-    $users->query("select paciente.id from paciente");
-    $results = $users->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
-	}
+	// public function getAllUsers() {
+  //   $users = $this->setConnection();
+  //   $users->query("select user.id from user");
+  //   $results = $users->fetchAll(PDO::FETCH_ASSOC);
+  //   return $results;
+	// }
 
   public function createTable() {
       $stmt = "CREATE TABLE user (
         id      			INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         nombre  			VARCHAR(63) NOT NULL,
         email  			VARCHAR(63) NOT NULL,
-        password  			VARCHAR(63) NOT NULL
+        password  			VARCHAR(255) NOT NULL
         )";
-      $query = $this->db->prepare($stmt);
+      $db = $this->setConnection();
+      $query = $db->prepare($stmt);
       $query->execute();
+      $query = null;
   }
 }
 

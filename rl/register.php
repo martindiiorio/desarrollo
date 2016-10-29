@@ -9,8 +9,7 @@ if ($_POST && $_POST["origen"] == "register") {
     $pNombre = $_POST["nombre"];
     $pMail = $_POST["mail"];
 
-    @$errores = $validar->validarUsuario($_POST);
-
+    $errores = $validar->validarUsuario($_POST);
     // nuevo usuario
     if (empty($errores)) {
       $miUsuarioArr = $_POST;

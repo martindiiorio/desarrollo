@@ -4,7 +4,7 @@ require_once("rl/clases/userRepository.php");
 
 class Table {
 
-    private $userRepository;
+  private $userRepository;
 
 	private static $instance = null;
 
@@ -12,8 +12,10 @@ class Table {
         if (Table::$instance === null) {
             Table::$instance = new Table();
             Table::$instance->setUserRepository($userRepository);
-            $userRepository->setConnection();
-            $userRepository->createTable();
+            $connection = $userRepository->setConnection();
+            if ($connection) {
+              $userRepository->createTable();
+            }
         }
 
         return Table::$instance;

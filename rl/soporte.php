@@ -14,6 +14,7 @@ $repositorio = null;
 if ($tipoRepositorio == "json") {
 	$repositorio = new JSONRepository();
 }
+
 if ($tipoRepositorio == "sql") {
 	$repositorio = new SQLRepository();
 }
