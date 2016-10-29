@@ -16,7 +16,7 @@ if ($_POST && $_POST["origen"] == "register") {
       $miUsuarioArr = $_POST;
       $usuario = new Usuario($_POST);
       $usuario->setPassword($_POST["password"]);
-      // Guardar al usuario en un JSON
+      // Guardar al usuario
       $repositorio->getUserRepository()->guardarUsuario($usuario);
     }
 }
