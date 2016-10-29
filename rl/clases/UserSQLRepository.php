@@ -25,10 +25,24 @@ class UserSQLRepository extends UserRepository {
 		return false;
 	}
 
+  public function setConnection() { //ver si se puede abstraer a userRepository como una funciona publica para quien hereda
+    $dbsn = 'mysql:host=localhost;dbname=dondeDuele;charset=utf8mb4;port:3306';
+    $db_user = 'root';
+    $db_pass = 'root';
+
+    try {
+        $db = new PDO($dbsn, $db_user, $db_pass);
+    }
+        catch (PDOException $Exception) {
+            return $Exception->getMessage();
+        }
+    return true;
+  }
+
   public function guardarUsuario(Usuario $miUsuario) {
     $miUsuarioArray = $this->usuarioToArray($miUsuario);
 
-    $connection = $this->getConnection();
+    $connection = $this->setConnection();
 
     if (!$connection) {
       echo $connection;
@@ -44,29 +58,10 @@ class UserSQLRepository extends UserRepository {
 
   }
 
-  private function setDatabaseData() {
-    $this->dbsn = 'mysql:host=localhost;dbname=dondeDuele;charset=utf8mb4;port:3306';
-    $this->db_user = 'root';
-    $this->db_pass = '123456';
-  }
-
-  private function getConnection() {
-    $this->setDatabaseData();
-    try {
-        $this->db = new PDO($this->dbsn, $this->db_user, $this->db_pass);
-    }
-        catch (PDOException $Exception) {
-            return $Exception->getMessage();
-        }
-    return true;
-  }
-
   private function prepareSaveQuery() {
       $stmt = "insert into paciente(nombre, email, password) values ('$nombre', '$email', '$password')";
       $this->query = $this->db->prepare($stmt);
   }
-
-  p
 
 	private function usuarioToArray(Usuario $miUsuario) {
 		$usuarioArray = [];

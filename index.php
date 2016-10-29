@@ -426,14 +426,14 @@ if ($auth->estaLogueado()) {
     <!-- scrollerJS: removido hasta arreglar el infinite scroll -->
     <!--<script type="text/javascript" src="js/scroller.js"></script>-->
     <!-- Validacion del registro -->
-    <!--<script type="text/javascript" src="js/validation.js"></script>-->
+    <script type="text/javascript" src="js/validation.js"></script>
     <script type="text/javascript" src="js/coverr.js"></script>
 
     <?php
     if (!empty($errores) && $_POST["origen"] == "register") { ?>
         <script> $("#myModalSignIn").modal(); </script>
     <?php }
-        
+
     if (!empty($errores) && $_POST["origen"] == "login") { ?>
         <script> $("#myModalLogIn").modal(); </script>
     <?php } ?>
