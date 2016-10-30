@@ -12,11 +12,11 @@ if ($_POST && $_POST["origen"] == "register") {
     $errores = $validar->validarUsuario($_POST);
     // nuevo usuario
     if (empty($errores)) {
-      $miUsuarioArr = $_POST;
       $usuario = new Usuario($_POST);
       $usuario->setPassword($_POST["password"]);
       // Guardar al usuario
       $repositorio->getUserRepository()->guardarUsuario($usuario);
+      $auth->loguear($usuario);
     }
 }
 

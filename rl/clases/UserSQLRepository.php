@@ -28,7 +28,7 @@ class UserSQLRepository extends UserRepository {
   public function setConnection() { //ver si se puede abstraer a userRepository como una funciona publica para quien hereda
     $dbsn = 'mysql:host=localhost;dbname=dondeDuele;charset=utf8mb4;port:3306';
     $db_user = 'root';
-    $db_pass = '';
+    $db_pass = 'root';
 
     try {
         $db = new PDO($dbsn, $db_user, $db_pass);
@@ -64,6 +64,7 @@ class UserSQLRepository extends UserRepository {
         $stmt = $this->setQuery($newUser);
         $query = $connection->prepare($stmt);
         $query->execute();
+        $query = null;
       }
         catch (PDOException $Exception) {
           echo $Exception->getMessage();
@@ -85,7 +86,6 @@ class UserSQLRepository extends UserRepository {
 
   private function setQuery($user) {
       $stmt = "insert into user(nombre, email, password) VALUES ('$user[0]', '$user[1]', '$user[2]')";
-      echo $stmt;
       return $stmt;
   }
 
