@@ -3,9 +3,7 @@
 require_once("rl/clases/userRepository.php");
 
 class Table {
-
   private $userRepository;
-
 	private static $instance = null;
 
 	public static function getInstance(UserRepository $userRepository) {
@@ -17,7 +15,6 @@ class Table {
               $userRepository->createTable();
             }
         }
-
         return Table::$instance;
     }
 

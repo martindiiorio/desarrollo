@@ -11,7 +11,7 @@ class Usuario {
 	{
 		$this->nombre = $miUsuario["nombre"];
 		$this->password = $miUsuario["password"];
-		$this->mail = $miUsuario["mail"];
+		$this->mail = $miUsuario["email"];
 	}
 
 	public function getNombre() {

@@ -42,7 +42,7 @@ if ($auth->estaLogueado()) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-home"></span>    dóndeDuele</a>
+                <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span>    dóndeDuele</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -89,24 +89,24 @@ if ($auth->estaLogueado()) {
                         <div class="form-group">
                             <!-- nombre -->
                             <label for="nombre" class="control-label" name="name">Nombre</label>
-                            <input type="text" class="form-control" id="nombre_1" name="nombre" placeholder="nombre" value="<?php echo $pNombre ?>">
+                            <input type="text" class="form-control" id="nombre_1" name="nombre" placeholder="" value="<?php echo $pNombre ?>">
                         </div>
                         <div class="form-group">
                             <!-- email -->
                             <label for="email" class="control-label" name="e-mail">Dirección de Correo Electrónico</label>
-                            <input type="text" class="form-control" id="email_id" name="mail" placeholder="juan@perez.com.ar" value="<?php echo $pMail ?>">
+                            <input type="text" class="form-control" id="email_id" name="email" placeholder="" value="<?php echo $pMail ?>">
                         </div>
 
                         <div class="form-group">
                             <!-- contraseña 1 -->
                             <label for="pass1" class="control-label" name="pass">Contraseña</label>
-                            <input type="password" class="form-control" id="pass_1" name="password" placeholder="contraseña">
+                            <input type="password" class="form-control" id="pass_1" name="password" placeholder="">
                         </div>
 
                         <div class="form-group">
                             <!-- contraseña 2 -->
                             <label for="pass2" class="control-label" name="cpass">Confirme Contraseña</label>
-                            <input type="password" class="form-control" id="pass_2" name="cpass" placeholder="confirmacion de contraseña">
+                            <input type="password" class="form-control" id="pass_2" name="cpass" placeholder="">
                         </div>
 
                         <div class="form-group">

@@ -1,10 +1,10 @@
-$("document").ready(function() {    
+$("document").ready(function() {
    // regex nombre: solo letras
    var nameregex = /^[a-zA-Z ]+$/;
 
    $.validator.addMethod("validname", function(value, element) { // metodo extra para validar por regex
       return this.optional(element) || nameregex.test(value);
-   }); 
+   });
 
    // regex mail: stuff@stuff.co (averiguar porque no requiere com);
    var eregex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -34,7 +34,7 @@ $("document").ready(function() {
             equalTo: "#pass_1"
          },
       },
-      messages: { //actualmente no se muestran. 
+      messages: { //actualmente no se muestran.
          nombre: {
             required: "Ingrese su nombre",
             validname: "El nombre solo debe contener letras",
@@ -66,7 +66,6 @@ $("document").ready(function() {
       },
       submitHandler: function(form) { // acciones a realizar cuando submit
          form.submit(); // valida todo una última vez
-         alert("ok"); // sigue ejecutando si jquery no encuentra errores de validacion y cierra el modal
       }
-   }); 
+   });
 })

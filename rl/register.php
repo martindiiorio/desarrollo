@@ -7,7 +7,7 @@ $pMail = "";
 
 if ($_POST && $_POST["origen"] == "register") {
     $pNombre = $_POST["nombre"];
-    $pMail = $_POST["mail"];
+    $pMail = $_POST["email"];
 
     $errores = $validar->validarUsuario($_POST);
     // nuevo usuario

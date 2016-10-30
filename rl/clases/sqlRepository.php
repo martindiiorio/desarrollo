@@ -6,13 +6,10 @@ require_once("rl/clases/UserSQLRepository.php");
 class SQLRepository extends Repository {
 	private $userRepository;
 
-	public function getUserRepository()
-	{
-		if ($this->userRepository == null)
-		{
+	public function getUserRepository() {
+		if ($this->userRepository == null) {
 			$this->userRepository = new UserSQLRepository();
 		}
-
 		return $this->userRepository;
 	}
 }
